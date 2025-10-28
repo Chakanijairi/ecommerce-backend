@@ -13,6 +13,10 @@ const PORT = process.env.PORT || 5000;
 
 app.use('/api/order', orderRoutes)
 
+app.get('/', (req, res) => {
+  res.send("Hello world")
+})
+
 app.listen(PORT, () => {
   connectDb();
   console.log(`Server running on http://localhost:${PORT}`)
