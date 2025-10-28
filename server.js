@@ -6,7 +6,7 @@ const orderRoutes = require('./routes/order.routes')
 
 const connectDb = require('./config/db')
 
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "https://ecommerce-frontend-ruddy-kappa.vercel.app" }));
 app.use(express.json()); 
 
 const PORT = process.env.PORT || 5000;
