@@ -6,7 +6,22 @@ const orderRoutes = require('./routes/order.routes')
 
 const connectDb = require('./config/db')
 
-app.use(cors({ origin: "https://ecommerce-frontend-ruddy-kappa.vercel.app" }));
+const allowedOrigins = [
+  "https://ecommerce-frontend-ruddy-kappa.vercel.app", // your deployed frontend
+  "http://localhost:5173" // your local frontend for testing
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true, // optional if you're using cookies or authentication
+}));
+
 app.use(express.json()); 
 
 const PORT = process.env.PORT || 5000;
