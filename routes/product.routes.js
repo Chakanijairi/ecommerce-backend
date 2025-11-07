@@ -10,7 +10,7 @@ const upload = require("../middleware/upload.middleware");
 
 const router = express.Router();
 
-router.get("/", authenticate, authorizeRoles("Admin"), getProducts);
+router.get("/", authenticate, getProducts);
 router.post("/", authenticate, authorizeRoles("Admin"), upload.single("image"), createProduct);
 router.put("/:id", authenticate, authorizeRoles("Admin"), upload.single("image"), updateProduct);
 router.delete("/:id", authenticate, authorizeRoles("Admin"), deleteProduct);
